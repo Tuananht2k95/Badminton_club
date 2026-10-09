@@ -8,6 +8,7 @@ userRouter.get("/", (req, res) => {
   res.json("test user");
 });
 userRouter.post("/", userController.store);
-userRouter.get("/getAll", userController.getAll);
+userRouter.post("/resetElo", userController.resetElo);
+userRouter.get("/getAll", userController.getAllName);
 
 export default userRouter;

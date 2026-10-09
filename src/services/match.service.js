@@ -41,7 +41,7 @@ class MatchService {
     allUsers.forEach((element) => {
       updates.push({
         id: element.id,
-        elo: 1000,
+        elo: element.gender === 1 ? 1000 : 800,
       });
     });
     return await MatchService.userRepository.bulkUpdateElo(updates);

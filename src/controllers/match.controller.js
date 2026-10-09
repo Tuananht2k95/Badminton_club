@@ -8,12 +8,6 @@ class MatchController {
 
     return res.status(200).json(newMatch);
   }
-
-  async resetElo(req, res) {
-    const result = await MatchController.matchService.resetElo();
-
-    return res.status(200).json(result);
-  }
 }
 
 export default MatchController;

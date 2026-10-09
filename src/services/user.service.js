@@ -9,10 +9,31 @@ class UserService {
     return newUser;
   }
 
-  async getAll() {
-    const allUser = await UserService.userRepository.findAll();
+  async resetElo() {
+    const allUsers = await UserService.userRepository.findAll();
+    const updates = [];
+    allUsers.forEach((element) => {
+      updates.push({
+        id: element.id,
+        elo: element.gender === 1 ? 1000 : 800,
+      });
+    });
+    return await UserService.userRepository.bulkUpdateElo(updates);
+  }
 
-    return allUser;
+  async getAllName() {
+    const allUsers = await UserService.userRepository.findAll();
+    const data = new Map(allUsers.map((user) => [user.name, user.id]));
+
+    // allUser.forEach((user) => {
+    //   data.push({
+    //     id: user._id,
+    //     name: user.name,
+    //   });
+    // });
+    console.log(data);
+
+    return allUsers;
   }
 }
 

@@ -9,8 +9,14 @@ class UserController {
     return res.json(newUser);
   }
 
-  async getAll(req, res) {
-    const allUser = await UserController.userService.getAll();
+  async resetElo(req, res) {
+    const result = await UserController.userService.resetElo();
+
+    return res.status(200).json(result);
+  }
+
+  async getAllName(req, res) {
+    const allUser = await UserController.userService.getAllName();
 
     return res.json(allUser);
   }
